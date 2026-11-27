@@ -1,0 +1,2132 @@
+/* =========================================
+   SKYNOÉ — COMPLETE CSS FINAL
+   MATCHED WITH HTML & JAVASCRIPT
+========================================= */
+
+/* =========================================
+   1. GLOBAL RESET
+========================================= */
+
+:root {
+  --cream: #fff7f1;
+  --pink: #e8b9c8;
+  --soft-pink: #f5dce3;
+  --rose: #bd8299;
+  --dark: #302333;
+  --purple: #594459;
+  --text: #574653;
+  --gold: #dfc18c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background: #302333;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 4px;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. MUSIC PLAYER
+========================================= */
+
+#music-player.music-player {
+  position: fixed;
+  z-index: 10000;
+  left: 22px;
+  bottom: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: auto;
+  max-width: calc(100vw - 40px);
+  min-height: 60px;
+  padding: 9px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+
+  color: #fff8f5;
+  background: rgba(48, 35, 51, 0.88);
+
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(14px);
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-note {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  color: #fff1f5;
+  background: linear-gradient(135deg, #c98da6, #77516e);
+
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+}
+
+.music-status {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #e9bdcc;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.music-info p {
+  margin: 0;
+  color: #fff8f5;
+  font-size: 12px;
+}
+
+#music-toggle {
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  color: #594052;
+  background: #f5dce3;
+
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+
+  cursor: pointer;
+  transition:
+    transform 0.25s,
+    background 0.25s;
+}
+
+#music-toggle:hover {
+  transform: scale(1.08);
+  background: white;
+}
+
+#music-player.playing .music-note {
+  animation: musicSpin 5s linear infinite;
+}
+
+@keyframes musicSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   3. SECRET LOCK SCREEN
+========================================= */
+
+#pin-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding: 25px 20px;
+
+  overflow-y: auto;
+
+  color: var(--cream);
+
+  background: radial-gradient(ellipse at 50% 30%, rgba(190, 139, 160, 0.2), transparent 55%), linear-gradient(145deg, #211a2a, #443044 60%, #65475b);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.lockscreen-view,
+.passcode-view {
+  width: min(100%, 480px);
+  text-align: center;
+}
+
+.lockscreen-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.lockscreen-top-label,
+.passcode-label {
+  color: #e5bdcc;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.lockscreen-clock {
+  width: 100%;
+}
+
+.countdown-heading {
+  color: #e5bdcc;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+#lockscreen-date {
+  margin: 15px 0 25px;
+  color: #fff6f2;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.countdown-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.countdown-item {
+  padding: 15px 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.countdown-item span {
+  display: block;
+  color: #fff5f4;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+}
+
+.countdown-item small {
+  display: block;
+  margin-top: 7px;
+
+  color: #dcb9c7;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.countdown-message {
+  margin-top: 20px;
+  color: rgba(255, 247, 241, 0.72);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.lockscreen-notification {
+  width: min(100%, 350px);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.notification-icon {
+  color: #efb8c9;
+  font-size: 25px;
+}
+
+.lockscreen-notification p {
+  margin: 0 0 5px;
+  color: #f8d9e2;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.lockscreen-notification span:last-child {
+  color: rgba(255, 247, 241, 0.7);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+#wake-screen-button {
+  padding: 15px 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+
+  color: #51394a;
+  background: #f3d6df;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#wake-screen-button:hover {
+  transform: translateY(-3px);
+  background: white;
+}
+
+.lockscreen-footer {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+/* PASSCODE VIEW */
+
+.passcode-view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translate(-50%, -46%);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    visibility 0.5s;
+}
+
+#pin-screen.show-passcode .lockscreen-view {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-15px);
+}
+
+#pin-screen.show-passcode .passcode-view {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.passcode-view h2 {
+  margin: 8px 0;
+  color: #fff7f3;
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  font-weight: 400;
+}
+
+.passcode-description {
+  color: rgba(255, 247, 241, 0.7);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pin-clue {
+  width: 100%;
+  margin: 18px 0;
+  padding: 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.pin-clue span {
+  color: #eac0cd;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.pin-clue p {
+  margin: 9px 0 0;
+  color: #fff4ef;
+  font-size: 13px;
+}
+
+.pin-clue .pin-clue-subtitle {
+  color: rgba(255, 247, 241, 0.65);
+  font-size: 11px;
+}
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+  margin: 20px 0 10px;
+}
+
+.pin-dot {
+  width: 12px;
+  height: 12px;
+
+  border: 1px solid #eac0cd;
+  border-radius: 50%;
+
+  background: transparent;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.pin-dot.filled {
+  background: #f2c6d5;
+  transform: scale(1.15);
+}
+
+.pin-message {
+  min-height: 20px;
+  color: #f1d1da;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.pin-message.error {
+  color: #ffaaa9;
+}
+
+.pin-keypad {
+  width: min(100%, 260px);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.pin-keypad button {
+  height: 53px;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 13px;
+
+  color: #fff7f3;
+  background: rgba(255, 255, 255, 0.08);
+
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pin-keypad button:hover:not(:disabled) {
+  color: #51394a;
+  background: #f3d6df;
+}
+
+.pin-keypad .pin-empty {
+  visibility: hidden;
+}
+
+.pin-back-button {
+  padding: 10px 20px;
+  border: 0;
+  color: #eac0cd;
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+#pin-screen.shake {
+  animation: pinShake 0.4s ease;
+}
+
+@keyframes pinShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-9px);
+  }
+  40%,
+  80% {
+    transform: translateX(9px);
+  }
+}
+
+#pin-screen.pin-success {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================
+   4. OPENING SCENE
+========================================= */
+
+#opening-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+  overflow: hidden;
+
+  color: var(--cream);
+
+  background: radial-gradient(ellipse at 50% 45%, rgba(176, 126, 157, 0.23), transparent 60%), linear-gradient(145deg, #211a2a, #433047 60%, #6b4c60);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s ease;
+}
+
+#opening-scene.opening-reveal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#opening-scene.is-leaving {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#stars-container,
+#flowers-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#stars-container {
+  z-index: 1;
+}
+
+#flowers-container {
+  z-index: 2;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  display: block;
+
+  border-radius: 50%;
+  background: #fff5e8;
+
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+
+  animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.garden-flower {
+  position: absolute;
+  display: block;
+
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+
+  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.18));
+}
+
+.garden-flower svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#intro-content {
+  position: relative;
+  z-index: 5;
+
+  width: min(100%, 760px);
+  padding: 30px 15px;
+
+  text-align: center;
+}
+
+.intro-label {
+  margin-bottom: 25px;
+  color: #e7bdcc;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+#intro-content h1 {
+  margin: 0 auto;
+
+  color: #fff8f2;
+  font-size: clamp(2.5rem, 7vw, 5.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+#intro-content h1 span {
+  display: block;
+  color: #e9bccc;
+  font-style: italic;
+}
+
+.intro-description {
+  max-width: 480px;
+  margin: 25px auto 30px;
+
+  color: rgba(255, 248, 242, 0.76);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+#enter-button {
+  padding: 16px 29px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 40px;
+
+  color: #51394a;
+  background: #f3d8e1;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    background 0.3s;
+}
+
+#enter-button:hover:not(:disabled) {
+  transform: translateY(-4px);
+  background: white;
+}
+
+#enter-button:disabled {
+  cursor: default;
+}
+
+.intro-footer {
+  margin-top: 35px;
+  color: rgba(255, 255, 255, 0.48);
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+/* =========================================
+   5. SURPRISE SCENE / FREE SCROLL
+========================================= */
+
+#surprise-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: visible;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background: #f8f0ed;
+
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+#surprise-scene.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body:has(#surprise-scene.active) {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.surprise-content {
+  width: 100%;
+  min-height: 430px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 80px 22px 55px;
+
+  color: #fff6f2;
+  text-align: center;
+
+  background: radial-gradient(ellipse at 50% 45%, rgba(199, 151, 169, 0.22), transparent 60%), linear-gradient(145deg, #342638, #684b60);
+}
+
+.surprise-label,
+.memory-label,
+.game-label,
+.final-label {
+  color: #c28da1;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.surprise-content .surprise-label {
+  color: #edc5d1;
+}
+
+.surprise-content h2 {
+  margin: 20px 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.surprise-description {
+  max-width: 520px;
+  color: rgba(255, 246, 242, 0.75);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* =========================================
+   6. ENVELOPE & LETTER
+========================================= */
+
+.letter-wrapper {
+  width: 100%;
+  padding: 80px 20px 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #f8f0ed;
+}
+
+.envelope-button {
+  width: min(100%, 380px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.envelope {
+  position: relative;
+  width: 260px;
+  height: 175px;
+  margin: 0 auto;
+
+  perspective: 900px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: 5px;
+  background: #c28d9d;
+}
+
+.envelope-paper {
+  position: absolute;
+  z-index: 2;
+  left: 15px;
+  bottom: 10px;
+
+  width: 230px;
+  height: 135px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #805d6c;
+  background: #fff7ed;
+
+  transition: transform 0.8s ease;
+}
+
+.envelope-paper span {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-style: italic;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  background: #d5a1ad;
+
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  width: 100%;
+  height: 100%;
+
+  background: #e5b7c1;
+
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  transform-origin: top center;
+
+  transition: transform 0.7s ease;
+}
+
+.envelope-seal {
+  position: absolute;
+  z-index: 5;
+  top: 78px;
+  left: 50%;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  color: white;
+  background: #a85f79;
+
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+}
+
+.envelope-button.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-button.opened .envelope-paper {
+  transform: translateY(-65px);
+  transition-delay: 0.35s;
+}
+
+.envelope-button.opened .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-hint {
+  margin-top: 22px;
+  color: #a57c8b;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.letter-message {
+  width: min(100%, 650px);
+  margin: 45px auto 15px;
+  padding: 40px clamp(20px, 6vw, 55px);
+
+  border: 1px solid #ead8d4;
+  background: #fffaf6;
+
+  box-shadow: 0 15px 40px rgba(104, 73, 82, 0.08);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    visibility 0.8s;
+}
+
+.letter-message.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.letter-date {
+  color: #bd8d9c;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.letter-message h3 {
+  margin: 22px 0;
+  color: #725363;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.letter-message > p:not(.letter-date):not(.letter-signature) {
+  color: #766873;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.letter-signature {
+  margin-top: 30px;
+  color: #9a7182;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.letter-signature span {
+  display: block;
+  font-style: italic;
+}
+
+.memory-button {
+  margin: 20px auto 65px;
+  padding: 14px 26px;
+
+  border: 1px solid #bd8d9c;
+  border-radius: 30px;
+
+  color: #875e70;
+  background: transparent;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.memory-button:hover:not(:disabled) {
+  color: white;
+  background: #a9798d;
+}
+
+.memory-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   7. MEMORY LANE
+========================================= */
+
+#memory-scene {
+  position: relative;
+  width: 100%;
+  padding: 90px 25px 110px;
+
+  color: #604c59;
+  background: #f1e5e5;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(35px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s;
+}
+
+#memory-scene.show-memories {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.memory-content {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.memory-content h2 {
+  margin: 20px 0;
+  color: #624b5b;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.memory-description {
+  color: #967b87;
+  font-size: 13px;
+}
+
+.memory-grid {
+  width: min(100%, 1050px);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.memory-card {
+  min-width: 0;
+  padding: 13px 13px 22px;
+
+  background: #fffaf7;
+  box-shadow: 0 12px 30px rgba(92, 64, 79, 0.08);
+
+  transition: transform 0.3s;
+}
+
+.memory-card:hover {
+  transform: translateY(-7px);
+}
+
+.memory-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #e5d5d7;
+}
+
+.memory-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.memory-card:hover .memory-photo img {
+  transform: scale(1.04);
+}
+
+.memory-caption {
+  margin: 20px 0 8px;
+  color: #9d6d83;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.memory-note {
+  margin: 0;
+  color: #8c7b83;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   8. PHOTO LIGHTBOX
+========================================= */
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 55px 20px;
+
+  background: rgba(22, 16, 25, 0.94);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+
+.photo-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox-image {
+  display: block;
+  max-width: min(90vw, 900px);
+  max-height: 85vh;
+  object-fit: contain;
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   9. BOTTLE OF LITTLE WISHES
+========================================= */
+
+#wishes-section {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 780px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 85px 20px;
+
+  overflow: hidden;
+
+  color: #fff7f3;
+  text-align: center;
+
+  background: radial-gradient(ellipse at 50% 45%, rgba(202, 157, 178, 0.2), transparent 60%), linear-gradient(150deg, #302437, #674a60);
+}
+
+#wishes-section h2 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 0 15px;
+
+  color: #fff4ef;
+  font-size: clamp(2rem, 6vw, 3.3rem);
+  font-weight: 400;
+}
+
+#wishes-section > p {
+  position: relative;
+  z-index: 2;
+
+  color: rgba(255, 247, 243, 0.72);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.wish-star {
+  position: absolute;
+  z-index: 0;
+
+  color: #e9c6d1;
+  font-size: 22px;
+
+  animation: wishStarFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes wishStarFloat {
+  from {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-12px);
+  }
+}
+
+#wish-bottle {
+  position: relative;
+  z-index: 2;
+
+  width: 190px;
+  height: 285px;
+
+  margin: 35px auto 10px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
+}
+
+#wish-bottle:hover:not(:disabled) {
+  transform: translateY(-6px) rotate(-2deg);
+}
+
+#wish-bottle::before {
+  content: "";
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 67px;
+
+  width: 56px;
+  height: 75px;
+
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.2));
+}
+
+#wish-bottle::after {
+  content: "";
+
+  position: absolute;
+  z-index: 0;
+  left: 12px;
+  bottom: 0;
+
+  width: 166px;
+  height: 220px;
+
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-radius: 43px 43px 36px 36px;
+
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.03) 35%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.25)), rgba(226, 195, 211, 0.13);
+
+  box-shadow:
+    inset 8px 0 15px rgba(255, 255, 255, 0.12),
+    0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.bottle-cork {
+  position: absolute;
+  z-index: 5;
+  top: -7px;
+  left: 69px;
+
+  width: 48px;
+  height: 27px;
+
+  border: 2px solid #a97e60;
+  border-radius: 7px 7px 4px 4px;
+
+  background: linear-gradient(90deg, #a87958, #e0bd91, #a87958);
+}
+
+.bottle-paper {
+  position: absolute;
+  z-index: 2;
+  left: 40px;
+  bottom: 42px;
+
+  width: 110px;
+  height: 125px;
+
+  border-radius: 7px;
+
+  background: rgba(255, 239, 218, 0.8);
+
+  transform: rotate(-5deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.bottle-rolls {
+  position: absolute;
+  z-index: 3;
+  left: 35px;
+  bottom: 32px;
+
+  width: 120px;
+  height: 145px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 7px;
+}
+
+.wish-roll {
+  width: 24px;
+  height: 65px;
+
+  border: 1px solid #d6b99e;
+  border-radius: 5px;
+
+  background: linear-gradient(90deg, #e7cfb5, #fff2df, #d9bfa4);
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+
+  transition:
+    opacity 0.3s,
+    transform 0.4s;
+}
+
+.wish-roll:nth-child(2n) {
+  transform: rotate(8deg);
+}
+
+.wish-roll:nth-child(3n) {
+  transform: rotate(-9deg);
+}
+
+.wish-roll.removed {
+  opacity: 0;
+  transform: translateY(-70px) rotate(25deg) scale(0.5);
+}
+
+#wish-bottle.wish-opening {
+  animation: bottleShake 0.65s ease;
+}
+
+@keyframes bottleShake {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-7deg);
+  }
+  40% {
+    transform: rotate(7deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+  80% {
+    transform: rotate(4deg);
+  }
+}
+
+.bottle-caption {
+  position: relative;
+  z-index: 2;
+
+  min-height: 24px;
+  margin: 15px 0;
+
+  color: #f0d2dc;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+#wish-display {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 500px);
+  min-height: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wish-opened {
+  width: 100%;
+  padding: 24px;
+
+  border: 1px solid #e7cfd1;
+  border-radius: 15px;
+
+  color: #634c59;
+  background: #fff4e9;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+
+  animation: wishAppear 0.7s ease both;
+}
+
+.wish-number {
+  color: #b17f93;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.wish-message {
+  color: #725b68;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.wish-end {
+  margin-top: 15px;
+  color: #ad7b90;
+  font-size: 13px;
+  font-style: italic;
+}
+
+#wish-bottle.bottle-finished {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@keyframes wishAppear {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   10. CATCH THE HEARTS GAME
+========================================= */
+
+#game-scene {
+  position: relative;
+  width: 100%;
+
+  padding: 90px 20px 100px;
+
+  color: #fff7f3;
+  text-align: center;
+
+  background: radial-gradient(ellipse at 50% 35%, rgba(199, 151, 169, 0.2), transparent 60%), linear-gradient(145deg, #35263b, #674b61);
+}
+
+.game-content {
+  width: min(100%, 750px);
+  margin: 0 auto;
+}
+
+.game-label {
+  color: #e7bdcc;
+}
+
+.game-content h2 {
+  margin: 20px 0;
+  font-size: clamp(2.3rem, 6vw, 3.7rem);
+  font-weight: 400;
+}
+
+.game-description {
+  max-width: 540px;
+  margin: 0 auto 30px;
+
+  color: rgba(255, 247, 243, 0.72);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.game-score {
+  width: fit-content;
+  min-width: 150px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  margin: 0 auto 25px;
+  padding: 13px 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.game-score span {
+  color: #e9c2cf;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.game-score strong {
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+#game-area {
+  position: relative;
+
+  width: min(100%, 650px);
+  height: 390px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 65%), rgba(25, 17, 31, 0.35);
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  touch-action: pan-y;
+}
+
+.game-start {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+
+  background: rgba(35, 24, 39, 0.88);
+
+  transition:
+    opacity 0.4s,
+    visibility 0.4s;
+}
+
+.game-start.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.game-start-heart {
+  color: #f0b8ca;
+  font-size: 45px;
+  animation: heartPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes heartPulse {
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.game-start p {
+  color: #fff3f1;
+  font-size: 16px;
+}
+
+#start-game-button,
+#continue-final-button {
+  padding: 13px 26px;
+
+  border: 0;
+  border-radius: 30px;
+
+  color: #543c4c;
+  background: #f4d6e0;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#start-game-button:hover,
+#continue-final-button:hover {
+  transform: translateY(-3px);
+  background: white;
+}
+
+.game-basket {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  z-index: 2;
+
+  width: 75px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid #f5c9d6;
+  border-radius: 12px 12px 24px 24px;
+
+  color: #fff;
+  background: linear-gradient(135deg, #d9a3b7, #a86e8c);
+
+  font-size: 30px;
+
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.game-heart {
+  position: absolute;
+  top: -35px;
+
+  color: #f4bfd0;
+  line-height: 1;
+
+  user-select: none;
+  pointer-events: none;
+
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+.game-instruction {
+  margin-top: 20px;
+  color: rgba(255, 247, 243, 0.65);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+/* Game result hidden until ten hearts */
+
+.game-result {
+  width: min(100%, 500px);
+  margin: 25px auto 0;
+  padding: 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+
+  color: #fff7f3;
+  background: rgba(255, 255, 255, 0.09);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(15px);
+
+  transition:
+    opacity 0.5s,
+    transform 0.5s,
+    visibility 0.5s;
+}
+
+.game-result.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.game-result > p:first-child {
+  color: #eac1ce;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.game-result h3 {
+  color: #fff3ef;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.game-result > p:not(:first-child) {
+  color: rgba(255, 247, 243, 0.7);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+#continue-final-button {
+  margin-top: 12px;
+}
+
+/* =========================================
+   11. FINAL MESSAGE
+========================================= */
+
+#final-scene {
+  position: relative;
+  width: 100%;
+  min-height: 750px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 100px 25px;
+
+  overflow: hidden;
+
+  color: #fff7f3;
+  text-align: center;
+
+  background: radial-gradient(ellipse at 50% 40%, rgba(202, 157, 178, 0.2), transparent 60%), linear-gradient(145deg, #302337, #65495f);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(35px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s;
+}
+
+#final-scene.show-final {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.final-label {
+  color: #e8bfce;
+}
+
+#final-scene h2 {
+  margin: 25px 0;
+
+  color: #fff7f3;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.final-message {
+  width: min(100%, 650px);
+  margin: 0 auto;
+
+  color: rgba(255, 247, 243, 0.78);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.final-signature {
+  margin-top: 35px;
+  color: #e8bdcc;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* =========================================
+   12. RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 800px) {
+  .memory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .memory-card:last-child {
+    grid-column: 1 / -1;
+    width: min(100%, 380px);
+    justify-self: center;
+  }
+}
+
+/* =========================================
+   13. RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  #music-player.music-player {
+    left: 12px;
+    bottom: 12px;
+    min-height: 52px;
+    gap: 8px;
+    padding: 7px 10px;
+  }
+
+  .music-note {
+    width: 33px;
+    height: 33px;
+    flex-basis: 33px;
+    font-size: 17px;
+  }
+
+  .music-info p {
+    font-size: 10px;
+  }
+
+  .music-status {
+    font-size: 7px;
+  }
+
+  #music-toggle {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .countdown-container {
+    gap: 6px;
+  }
+
+  .countdown-item {
+    padding: 12px 3px;
+  }
+
+  .countdown-item small {
+    font-size: 7px;
+  }
+
+  .passcode-view {
+    padding: 15px;
+  }
+
+  #intro-content h1 {
+    font-size: clamp(2.2rem, 9vw, 3.6rem);
+  }
+
+  .intro-description {
+    font-size: 12px;
+  }
+
+  .surprise-content {
+    min-height: 380px;
+    padding: 70px 20px;
+  }
+
+  .surprise-content h2 {
+    font-size: 2rem;
+  }
+
+  .letter-wrapper {
+    padding: 65px 17px 30px;
+  }
+
+  .envelope {
+    transform: scale(0.9);
+  }
+
+  .letter-message {
+    margin-top: 25px;
+    padding: 27px 22px;
+  }
+
+  .letter-message h3 {
+    font-size: 20px;
+  }
+
+  .letter-message > p:not(.letter-date):not(.letter-signature) {
+    font-size: 13px;
+  }
+
+  #memory-scene {
+    padding: 70px 16px 85px;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+    width: min(100%, 380px);
+  }
+
+  .memory-card:last-child {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .memory-photo {
+    aspect-ratio: 4 / 4.5;
+  }
+
+  #wishes-section {
+    min-height: 720px;
+    padding: 75px 16px;
+  }
+
+  #wish-bottle {
+    transform: scale(0.9);
+    margin: 20px auto 5px;
+  }
+
+  #wish-bottle:hover:not(:disabled) {
+    transform: scale(0.9) translateY(-4px);
+  }
+
+  .wish-message {
+    font-size: 14px;
+  }
+
+  #game-scene {
+    padding: 75px 14px;
+  }
+
+  #game-area {
+    height: 340px;
+    border-radius: 15px;
+  }
+
+  .game-basket {
+    width: 65px;
+    height: 42px;
+  }
+
+  .game-result {
+    padding: 20px;
+  }
+
+  .game-result h3 {
+    font-size: 19px;
+  }
+
+  #final-scene {
+    min-height: 700px;
+    padding: 85px 22px;
+  }
+
+  #final-scene h2 {
+    font-size: 2.25rem;
+  }
+
+  .final-message {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .countdown-container {
+    gap: 4px;
+  }
+
+  .countdown-item span {
+    font-size: 1.3rem;
+  }
+
+  #lockscreen-date {
+    font-size: 2.3rem;
+  }
+
+  .memory-grid {
+    width: 100%;
+  }
+
+  #game-area {
+    height: 300px;
+  }
+
+  #wish-bottle {
+    transform: scale(0.82);
+    margin: 0 auto;
+  }
+
+  #wish-bottle:hover:not(:disabled) {
+    transform: scale(0.82) translateY(-4px);
+  }
+}
+
+/* =========================================
+   14. REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   SKYNOÉ - EMERGENCY DISPLAY FIX
+========================================= */
+
+/* Setelah PIN benar, opening wajib terlihat */
+#opening-scene.opening-reveal {
+  display: flex !important;
+  position: relative;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* Opening saat tombol ENTER ditekan */
+#opening-scene.is-leaving {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+/* Halaman utama setelah ENTER */
+#surprise-scene.active {
+  display: flex !important;
+  position: relative !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 100vh;
+  overflow: visible !important;
+  flex-direction: column;
+}
+
+/* Pastikan isi halaman tidak tersembunyi */
+#surprise-scene.active > *,
+#surprise-scene.active section {
+  visibility: visible;
+}
+
+/* Scroll halaman setelah masuk */
+body:has(#surprise-scene.active) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Hilangkan ikon musik dekoratif agar tidak dobel */
+#music-player .music-note {
+  display: none !important;
+}
+
+/* Tombol musik tetap terlihat */
+#music-player #music-toggle {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Pastikan player musik tidak tertutup */
+#music-player {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 99999 !important;
+}
+/* =========================================
+   FINAL FIX — REMOVE OPENING FROM PAGE FLOW
+========================================= */
+
+#opening-scene.opening-reveal.is-leaving {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+
+  z-index: 10 !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Surprise langsung dimulai dari atas halaman */
+#surprise-scene.active {
+  position: relative !important;
+  margin-top: 0 !important;
+}
