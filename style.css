@@ -1,5 +1,6 @@
+
 /* =========================================
-   SKYNOÉ — COMPLETE CSS FINAL
+   SKYNOÉ — COMPLETE CSS FINAL FIX
    MATCHED WITH HTML & JAVASCRIPT
 ========================================= */
 
@@ -185,7 +186,18 @@ button:focus-visible {
 
   color: var(--cream);
 
-  background: radial-gradient(ellipse at 50% 30%, rgba(190, 139, 160, 0.2), transparent 55%), linear-gradient(145deg, #211a2a, #443044 60%, #65475b);
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(190, 139, 160, 0.2),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #211a2a,
+      #443044 60%,
+      #65475b
+    );
 
   opacity: 1;
   visibility: visible;
@@ -508,10 +520,12 @@ button:focus-visible {
   100% {
     transform: translateX(0);
   }
+
   20%,
   60% {
     transform: translateX(-9px);
   }
+
   40%,
   80% {
     transform: translateX(9px);
@@ -523,9 +537,8 @@ button:focus-visible {
   pointer-events: none;
 }
 
-
 /* =========================================
-   SKYNOÉ — OPENING SCENE RESPONSIVE FIX
+   4. OPENING SCENE
 ========================================= */
 
 #opening-scene {
@@ -549,7 +562,12 @@ button:focus-visible {
       rgba(176, 126, 157, 0.23),
       transparent 60%
     ),
-    linear-gradient(145deg, #211a2a, #433047 60%, #6b4c60);
+    linear-gradient(
+      145deg,
+      #211a2a,
+      #433047 60%,
+      #6b4c60
+    );
 
   opacity: 0;
   visibility: hidden;
@@ -665,121 +683,6 @@ button:focus-visible {
 }
 
 /* =========================================
-   MOBILE OPENING
-========================================= */
-
-@media (max-width: 600px) {
-  #opening-scene {
-    min-height: 100svh;
-    padding: 20px 18px;
-  }
-
-  #intro-content {
-    width: 100%;
-    padding: 15px 5px;
-  }
-
-  .intro-label {
-    margin-bottom: 15px;
-    font-size: 8px;
-    letter-spacing: 2.5px;
-  }
-
-  #intro-content h1 {
-    font-size: clamp(1.9rem, 8vw, 2.8rem);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-  }
-
-  .intro-description {
-    max-width: 340px;
-    margin: 16px auto 20px;
-    font-size: 12px;
-    line-height: 1.65;
-  }
-
-  #enter-button {
-    min-height: 44px;
-    padding: 12px 27px;
-    font-size: 9px;
-  }
-
-  .intro-footer {
-    margin-top: 20px;
-    font-size: 7px;
-    letter-spacing: 1.8px;
-  }
-}
-
-/* HP KECIL */
-@media (max-width: 380px) {
-  #opening-scene {
-    padding: 15px 14px;
-  }
-
-  #intro-content h1 {
-    font-size: clamp(1.75rem, 7.5vw, 2.3rem);
-  }
-
-  .intro-description {
-    max-width: 300px;
-    font-size: 11px;
-    line-height: 1.6;
-  }
-
-  .intro-footer {
-    margin-top: 15px;
-  }
-}
-
-/* LAYAR PENDEK */
-@media (max-height: 650px) {
-  #opening-scene {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  #intro-content {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .intro-label {
-    margin-bottom: 10px;
-  }
-
-  #intro-content h1 {
-    font-size: clamp(1.7rem, 5vw, 3rem);
-  }
-
-  .intro-description {
-    margin-top: 10px;
-    margin-bottom: 13px;
-    line-height: 1.5;
-  }
-
-  .intro-footer {
-    margin-top: 12px;
-  }
-}
-
-/* PERTAHANKAN FIX TRANSISI */
-#opening-scene.opening-reveal.is-leaving {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: auto !important;
-  width: 100% !important;
-  height: 100vh !important;
-  min-height: 100svh !important;
-  z-index: 10 !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* =========================================
    5. SURPRISE SCENE / FREE SCROLL
 ========================================= */
 
@@ -830,7 +733,17 @@ body:has(#surprise-scene.active) {
   color: #fff6f2;
   text-align: center;
 
-  background: radial-gradient(ellipse at 50% 45%, rgba(199, 151, 169, 0.22), transparent 60%), linear-gradient(145deg, #342638, #684b60);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(199, 151, 169, 0.22),
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #342638,
+      #684b60
+    );
 }
 
 .surprise-label,
@@ -1268,7 +1181,17 @@ body:has(#surprise-scene.active) {
   color: #fff7f3;
   text-align: center;
 
-  background: radial-gradient(ellipse at 50% 45%, rgba(202, 157, 178, 0.2), transparent 60%), linear-gradient(150deg, #302437, #674a60);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(202, 157, 178, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      150deg,
+      #302437,
+      #674a60
+    );
 }
 
 #wishes-section h2 {
@@ -1350,7 +1273,13 @@ body:has(#surprise-scene.active) {
   border-bottom: 0;
   border-radius: 12px 12px 0 0;
 
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.2));
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.17),
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.2)
+    );
 }
 
 #wish-bottle::after {
@@ -1367,7 +1296,15 @@ body:has(#surprise-scene.active) {
   border: 3px solid rgba(255, 255, 255, 0.75);
   border-radius: 43px 43px 36px 36px;
 
-  background: linear-gradient(100deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.03) 35%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.25)), rgba(226, 195, 211, 0.13);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.03) 35%,
+      rgba(255, 255, 255, 0.15) 75%,
+      rgba(255, 255, 255, 0.25)
+    ),
+    rgba(226, 195, 211, 0.13);
 
   box-shadow:
     inset 8px 0 15px rgba(255, 255, 255, 0.12),
@@ -1386,7 +1323,13 @@ body:has(#surprise-scene.active) {
   border: 2px solid #a97e60;
   border-radius: 7px 7px 4px 4px;
 
-  background: linear-gradient(90deg, #a87958, #e0bd91, #a87958);
+  background:
+    linear-gradient(
+      90deg,
+      #a87958,
+      #e0bd91,
+      #a87958
+    );
 }
 
 .bottle-paper {
@@ -1429,7 +1372,13 @@ body:has(#surprise-scene.active) {
   border: 1px solid #d6b99e;
   border-radius: 5px;
 
-  background: linear-gradient(90deg, #e7cfb5, #fff2df, #d9bfa4);
+  background:
+    linear-gradient(
+      90deg,
+      #e7cfb5,
+      #fff2df,
+      #d9bfa4
+    );
 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 
@@ -1460,15 +1409,19 @@ body:has(#surprise-scene.active) {
   100% {
     transform: rotate(0);
   }
+
   20% {
     transform: rotate(-7deg);
   }
+
   40% {
     transform: rotate(7deg);
   }
+
   60% {
     transform: rotate(-5deg);
   }
+
   80% {
     transform: rotate(4deg);
   }
@@ -1563,7 +1516,17 @@ body:has(#surprise-scene.active) {
   color: #fff7f3;
   text-align: center;
 
-  background: radial-gradient(ellipse at 50% 35%, rgba(199, 151, 169, 0.2), transparent 60%), linear-gradient(145deg, #35263b, #674b61);
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      rgba(199, 151, 169, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #35263b,
+      #674b61
+    );
 }
 
 .game-content {
@@ -1633,7 +1596,13 @@ body:has(#surprise-scene.active) {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
 
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 65%), rgba(25, 17, 31, 0.35);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 65%
+    ),
+    rgba(25, 17, 31, 0.35);
 
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 
@@ -1752,7 +1721,7 @@ body:has(#surprise-scene.active) {
   letter-spacing: 0.5px;
 }
 
-/* Game result hidden until ten hearts */
+/* GAME RESULT */
 
 .game-result {
   width: min(100%, 500px);
@@ -1829,7 +1798,17 @@ body:has(#surprise-scene.active) {
   color: #fff7f3;
   text-align: center;
 
-  background: radial-gradient(ellipse at 50% 40%, rgba(202, 157, 178, 0.2), transparent 60%), linear-gradient(145deg, #302337, #65495f);
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(202, 157, 178, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #302337,
+      #65495f
+    );
 
   opacity: 0;
   visibility: hidden;
@@ -1943,14 +1922,6 @@ body:has(#surprise-scene.active) {
     padding: 15px;
   }
 
-  #intro-content h1 {
-    font-size: clamp(2.2rem, 9vw, 3.6rem);
-  }
-
-  .intro-description {
-    font-size: 12px;
-  }
-
   .surprise-content {
     min-height: 380px;
     padding: 70px 20px;
@@ -2053,6 +2024,10 @@ body:has(#surprise-scene.active) {
   }
 }
 
+/* =========================================
+   14. RESPONSIVE SMALL MOBILE
+========================================= */
+
 @media (max-width: 380px) {
   .countdown-container {
     gap: 4px;
@@ -2085,7 +2060,118 @@ body:has(#surprise-scene.active) {
 }
 
 /* =========================================
-   14. REDUCED MOTION
+   15. OPENING RESPONSIVE FIX
+========================================= */
+
+@media (max-width: 600px) {
+  #opening-scene {
+    min-height: 100svh;
+    padding: 15px 18px;
+  }
+
+  #intro-content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .intro-label {
+    margin: 0 0 12px;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+  }
+
+  #intro-content h1 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+  }
+
+  .intro-description {
+    max-width: 340px;
+    margin: 13px auto 17px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  #enter-button {
+    min-height: 42px;
+    padding: 11px 26px;
+    font-size: 9px;
+  }
+
+  .intro-footer {
+    margin-top: 14px;
+    font-size: 7px;
+    letter-spacing: 1.8px;
+  }
+}
+
+/* HP KECIL */
+
+@media (max-width: 380px) {
+  #opening-scene {
+    padding: 12px 14px;
+  }
+
+  #intro-content {
+    padding: 8px 4px;
+  }
+
+  #intro-content h1 {
+    font-size: clamp(1.7rem, 7vw, 2.3rem);
+  }
+
+  .intro-description {
+    max-width: 300px;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .intro-footer {
+    margin-top: 12px;
+  }
+}
+
+/* LAYAR PENDEK */
+
+@media (max-height: 650px) {
+  #opening-scene {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  #intro-content {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .intro-label {
+    margin-bottom: 8px;
+  }
+
+  #intro-content h1 {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    line-height: 1.08;
+  }
+
+  .intro-description {
+    margin-top: 9px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  #enter-button {
+    min-height: 40px;
+    padding: 10px 24px;
+  }
+
+  .intro-footer {
+    margin-top: 10px;
+  }
+}
+
+/* =========================================
+   16. REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2100,10 +2186,11 @@ body:has(#surprise-scene.active) {
 }
 
 /* =========================================
-   SKYNOÉ - EMERGENCY DISPLAY FIX
+   17. EMERGENCY DISPLAY FIX
 ========================================= */
 
 /* Setelah PIN benar, opening wajib terlihat */
+
 #opening-scene.opening-reveal {
   display: flex !important;
   position: relative;
@@ -2114,69 +2201,75 @@ body:has(#surprise-scene.active) {
 }
 
 /* Opening saat tombol ENTER ditekan */
+
 #opening-scene.is-leaving {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+
   transition:
     opacity 1s ease,
     visibility 1s ease;
 }
 
 /* Halaman utama setelah ENTER */
+
 #surprise-scene.active {
   display: flex !important;
   position: relative !important;
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+
   width: 100%;
   height: auto !important;
   min-height: 100vh;
   overflow: visible !important;
+
   flex-direction: column;
 }
 
-/* Pastikan isi halaman tidak tersembunyi */
-#surprise-scene.active > *,
-#surprise-scene.active section {
-  visibility: visible;
-}
-
 /* Scroll halaman setelah masuk */
+
 body:has(#surprise-scene.active) {
   overflow-x: hidden !important;
   overflow-y: auto !important;
 }
 
 /* Hilangkan ikon musik dekoratif agar tidak dobel */
+
 #music-player .music-note {
   display: none !important;
 }
 
 /* Tombol musik tetap terlihat */
+
 #music-player #music-toggle {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
 /* Pastikan player musik tidak tertutup */
+
 #music-player {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
   z-index: 99999 !important;
 }
+
 /* =========================================
-   FINAL FIX — REMOVE OPENING FROM PAGE FLOW
+   18. FINAL FIX — REMOVE OPENING FROM PAGE FLOW
 ========================================= */
 
 #opening-scene.opening-reveal.is-leaving {
   position: absolute !important;
+
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -2195,6 +2288,7 @@ body:has(#surprise-scene.active) {
 }
 
 /* Surprise langsung dimulai dari atas halaman */
+
 #surprise-scene.active {
   position: relative !important;
   margin-top: 0 !important;
