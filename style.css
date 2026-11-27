@@ -721,8 +721,16 @@ body:has(#surprise-scene.active) {
 
 .surprise-content {
   width: 100%;
+
+  height: 100vh;
+  height: 100svh;
+
   min-height: 100vh;
   min-height: 100svh;
+
+  flex: 0 0 100vh;
+  flex-basis: 100svh;
+  flex-shrink: 0;
 
   display: flex;
   flex-direction: column;
@@ -1924,8 +1932,16 @@ body:has(#surprise-scene.active) {
   }
 
  .surprise-content {
+  height: 100vh;
+  height: 100svh;
+
   min-height: 100vh;
   min-height: 100svh;
+
+  flex: 0 0 100vh;
+  flex-basis: 100svh;
+  flex-shrink: 0;
+
   padding: 70px 20px;
 }
   .surprise-content h2 {
