@@ -721,7 +721,8 @@ body:has(#surprise-scene.active) {
 
 .surprise-content {
   width: 100%;
-  min-height: 430px;
+  min-height: 100vh;
+  min-height: 100svh;
 
   display: flex;
   flex-direction: column;
@@ -1922,11 +1923,11 @@ body:has(#surprise-scene.active) {
     padding: 15px;
   }
 
-  .surprise-content {
-    min-height: 380px;
-    padding: 70px 20px;
-  }
-
+ .surprise-content {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 70px 20px;
+}
   .surprise-content h2 {
     font-size: 2rem;
   }
